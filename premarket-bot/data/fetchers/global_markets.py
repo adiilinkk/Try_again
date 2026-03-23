@@ -39,8 +39,10 @@ TICKERS: dict[str, str] = {
     "vix":       "^VIX",
     "nikkei":    "^N225",
     "hang_seng": "^HSI",
-    "nifty":     "^NSEI",
 }
+
+# Gift Nifty uses ^NSEI from yfinance as an indicative proxy only.
+GIFT_NIFTY_SYMBOL = "^NSEI"
 
 
 # ── VIX classification ────────────────────────────────────────────────────────
@@ -172,6 +174,18 @@ def fetch_global_markets() -> dict[str, MarketDataPoint | None]:
         results["vix_label"] = "Unknown"      # type: ignore[assignment]
 
     return results
+
+
+def fetch_gift_nifty() -> MarketDataPoint | None:
+    """
+    Fetch ^NSEI from yfinance as an indicative Gift Nifty proxy.
+    is_indicative is always True — this is NOT the official Gift Nifty futures price.
+    Returns None if fetch fails.
+    """
+    point = _build_data_point("gift_nifty", GIFT_NIFTY_SYMBOL)
+    if point is not None:
+        point.is_indicative = True
+    return point
 
 
 # Alias for backward compatibility

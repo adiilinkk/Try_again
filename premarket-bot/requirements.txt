@@ -13,5 +13,4 @@ tenacity==8.2.3
 razorpay==1.3.0
 fastapi==0.110.0
 uvicorn==0.27.1
-kiteconnect==5.0.1
 pytest==8.0.0
