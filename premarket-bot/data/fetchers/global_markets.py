@@ -172,3 +172,7 @@ def fetch_global_markets() -> dict[str, MarketDataPoint | None]:
         results["vix_label"] = "Unknown"      # type: ignore[assignment]
 
     return results
+
+
+# Alias for backward compatibility
+fetch_all_global_markets = fetch_global_markets
