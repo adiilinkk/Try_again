@@ -11,6 +11,10 @@ venv/
 env/
 
 # Secrets (never commit real credentials)
+config/secrets.env
+.env
+*.env
+!*.env.example
 secrets.local.env
 *.local.env
 
